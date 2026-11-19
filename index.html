@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>راز بندهای منظم | آواز گنجشک</title>
+<style>
+@import url(''); 
+:root{--ink:#3e3440;--pink:#f4b9c9;--pink2:#fff0f4;--cream:#fffaf0;--yellow:#f7d978;--green:#9bc9ad;--red:#d87979;--purple:#b9a6d8;--line:#eadde2}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(135deg,#fff7ed,#fff0f5 55%,#f4f0ff);font-family:Tahoma,"Segoe UI",sans-serif;color:var(--ink);min-height:100vh}
+button{font:inherit;cursor:pointer}
+.wrap{max-width:980px;margin:auto;padding:22px 16px 42px}
+.hero{background:var(--cream);border:2px solid #f0dce2;border-radius:26px;padding:22px;text-align:center;box-shadow:0 8px 22px #77505a12;position:relative;overflow:hidden}
+.hero:before,.hero:after{content:"";position:absolute;width:90px;height:90px;border-radius:50%;background:#f8dce5;opacity:.55}
+.hero:before{top:-45px;right:-25px}.hero:after{bottom:-55px;left:-20px}
+.kicker{font-size:13px;color:#97748a;letter-spacing:.3px}
+h1{font-size:clamp(24px,5vw,38px);margin:9px 0 8px;color:#86566f}
+.hero p{margin:0;line-height:1.9}
+.pill{display:inline-block;background:#f9e5ad;border-radius:99px;padding:6px 13px;font-size:13px;margin-top:12px}
+.progressbox{margin:17px 2px 20px;background:#fff;border-radius:16px;padding:12px 15px;border:1px solid var(--line)}
+.progressline{height:10px;background:#f1e8ed;border-radius:20px;overflow:hidden;margin-top:8px}
+#bar{height:100%;width:0;background:linear-gradient(90deg,#e9a9bd,#b9a6d8);transition:width .3s}
+.toprow{display:flex;justify-content:space-between;gap:10px;align-items:center;font-size:14px}
+.card{background:#fff;border:1px solid var(--line);border-radius:23px;padding:clamp(17px,4vw,27px);box-shadow:0 8px 20px #77505a0c}
+.taskhead{display:flex;gap:12px;align-items:center;margin-bottom:13px}
+.num{width:42px;height:42px;display:grid;place-items:center;border-radius:14px;background:#fbe1e9;color:#8a526d;font-weight:bold;flex:none}
+h2{font-size:21px;margin:0 0 4px}
+.sub{font-size:14px;color:#806f79;line-height:1.8;margin:0}
+.story{background:#fff8e8;border-right:4px solid var(--yellow);padding:13px 15px;border-radius:13px;line-height:2;margin:14px 0}
+.options{display:grid;gap:10px;margin:16px 0}
+.opt{border:2px solid #eee4e9;background:#fff;border-radius:14px;padding:12px 14px;text-align:right;line-height:1.8;transition:.15s;color:var(--ink)}
+.opt:hover{border-color:#d6b6c8;background:#fffafd}
+.opt.selected{border-color:#bd8eaa;background:#fff1f6}
+.opt.correct{border-color:#79b894;background:#effaf2}
+.opt.wrong{border-color:#d98b8b;background:#fff1f0}
+.opt:disabled{cursor:default;opacity:1}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.primary,.secondary{border:0;border-radius:13px;padding:11px 20px;font-weight:bold}
+.primary{background:#966b86;color:#fff}.primary:hover{background:#80566f}
+.secondary{background:#f2eaf0;color:#765c6d}
+.feedback{display:none;padding:12px 14px;border-radius:13px;line-height:1.8;margin-top:13px;font-size:14px}
+.feedback.show{display:block}.feedback.good{background:#edf8f0;color:#356548}.feedback.bad{background:#fff1ef;color:#8a4949}
+.hint{font-size:13px;color:#8a7782;margin-top:12px}
+.orderlist{display:grid;gap:9px;margin-top:15px}
+.orderitem{display:flex;align-items:center;gap:10px;border:1px solid #eadde2;background:#fffafd;padding:10px;border-radius:13px}
+.orderitem span{flex:1;line-height:1.7}
+.move{border:0;background:#f2eaf0;border-radius:9px;width:34px;height:34px;color:#765c6d;font-weight:bold}
+.choicegrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:9px;margin-top:14px}
+.choice{border:2px solid #eee4e9;border-radius:13px;padding:12px;background:#fff;text-align:right;line-height:1.8}
+.choice.on{border-color:#b895c9;background:#f8f3ff}
+.choice small{display:block;color:#887b86;margin-top:4px}
+.result{text-align:center;padding:25px}
+.score{font-size:42px;color:#8d6280;font-weight:bold;margin:12px}
+.footer{text-align:center;color:#9b8793;font-size:12px;margin-top:18px}
+@media(max-width:520px){.wrap{padding:12px 10px 30px}.hero{padding:19px 14px}.toprow{font-size:12px}.actions button{flex:1}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="hero">
+ <div class="kicker">اداره تکنولوژی گروه های آموزشی و بررسی محتوا</div>
+ <h1>رازِ بندهای منظم</h1>
+ <p>با گنجشک کوچولو همراه شو و یاد بگیر چطور جمله‌ها را کنار هم بچینی<br>تا یک بند زیبا و کامل بسازی.</p>
+ <span class="pill">طراح: یگانه طالبی</span>
+</header>
+<div class="progressbox">
+ <div class="toprow"><strong id="stepLabel">مرحله ۱ از ۶</strong><strong>امتیاز: <span id="score">۰</span></strong></div>
+ <div class="progressline"><div id="bar"></div></div>
+</div>
+<main id="game" class="card" aria-live="polite"></main>
+<div class="footer">بازی آموزشی معماری بند · قابل اجرا بدون اینترنت</div>
+</div>
+<script>
+const tasks = [
+ {type:"single",title:"جملهٔ موضوع را پیدا کن",desc:"جملهٔ موضوع، فکر اصلی بند را بیان می‌کند. کدام جمله برای شروع این بند مناسب‌تر است؟",story:"گنجشک کوچولو هر روز صبح روی شاخهٔ درخت می‌نشیند و آواز می‌خواند.",q:"موضوع اصلی این بند چیست؟",opts:["درخت کنار پنجره خیلی بلند است.","من دیروز یک مداد تازه خریدم.","گنجشک کوچولو هر روز صبح آواز می‌خواند."],a:2,why:"آفرین! این جمله موضوع اصلی بند را معرفی می‌کند و جمله‌های دیگر می‌توانند آن را توضیح دهند."},
+ {type:"multi",title:"جمله‌های مکمل را انتخاب کن",desc:"جمله‌های مکمل، دربارهٔ جملهٔ موضوع توضیح بیشتری می‌دهند. دو جملهٔ مرتبط را انتخاب کن.",story:"جملهٔ موضوع: «آواز گنجشک، صبح دل‌انگیزی می‌سازد.»",opts:["خواهرم یک دفتر آبی دارد.","صدای دلنشین او در حیاط می‌پیچد.","اتوبوس زرد از خیابان گذشت.","گنجشک با شادی روی شاخه می‌پرد."],a:[1,3],why:"درست است! هر دو جمله دربارهٔ آواز و رفتار گنجشک هستند و موضوع را کامل‌تر می‌کنند."},
+ {type:"order",title:"جمله‌ها را مرتب کن",desc:"برای ساختن یک بند منظم، جمله‌ها باید ترتیب منطقی داشته باشند. با فلش‌ها آن‌ها را جابه‌جا کن.",items:["بعد از کمی آواز خواندن، به لانه‌اش برگشت.","صبح زود، گنجشک کوچولو از خواب بیدار شد.","او روی شاخه نشست و آواز زیبایی خواند."],correct:[1,2,0],why:"آفرین! اول گنجشک بیدار می‌شود، بعد آواز می‌خواند و در پایان به لانه برمی‌گردد."},
+ {type:"single",title:"جملهٔ پایانی مناسب",desc:"جملهٔ پایانی، بند را کامل می‌کند و حس تمام‌شدن می‌دهد. کدام جمله پایان بهتری است؟",story:"گنجشک کوچولو صبح زود آواز خواند. صدای او همهٔ باغ را پر از شادی کرد.",q:"کدام جمله برای پایان بند مناسب‌تر است؟",opts:["من برای ناهار برنج خوردم.","چه آواز شادی‌بخشی، صبح باغ را زیباتر کرد!","گنجشک روی شاخه نشسته بود و آواز می‌خواند."],a:1,why:"درست انتخاب کردی! این جمله هم به موضوع مربوط است و هم پایان مناسبی برای بند می‌سازد."},
+ {type:"multi",title:"جمله‌های هم‌موضوع را بشناس",desc:"همهٔ جمله‌های یک بند باید از نظر معنایی به هم ارتباط داشته باشند. سه جملهٔ مربوط به موضوع را انتخاب کن.",story:"موضوع بند: «گنجشک‌ها برای زندگی به مراقبت نیاز دارند.»",opts:["کفش ورزشی من بندهای سفید دارد.","باید برای آن‌ها آب و دانهٔ پاکیزه فراهم کنیم.","زمستان امسال یک کتاب داستان خواندم.","با مهربانی از پرندگان مراقبت کنیم.","بهتر است به لانه و جوجه‌هایشان آسیب نزنیم."],a:[1,3,4],why:"آفرین! سه جملهٔ انتخاب‌شده همگی دربارهٔ مراقبت از گنجشک‌ها هستند."},
+ {type:"extra",title:"جملهٔ اضافی را پیدا کن و حذف کن",desc:"در این بند یک جمله با موضوع ارتباط ندارد. روی جملهٔ اضافی بزن تا آن را حذف کنی.",story:"گنجشک کوچولو هر روز به باغ می‌آید. او روی شاخه می‌نشیند و آواز می‌خواند. صدای زیبایش به باغ شادی می‌بخشد. من یک توپ قرمز دارم.",opts:["گنجشک کوچولو هر روز به باغ می‌آید.","من یک توپ قرمز دارم.","او روی شاخه می‌نشیند و آواز می‌خواند.","صدای زیبایش به باغ شادی می‌بخشد."],a:1,why:"درست است! جملهٔ مربوط به توپ قرمز دربارهٔ موضوع بند نیست؛ پس باید حذف شود."}
+];
+let index=0,score=0,answers=[],order=[];
+const fa=n=>String(n).replace(/[0-9]/g,d=>"۰۱۲۳۴۵۶۷۸۹"[d]);
+function updateTop(){document.getElementById('stepLabel').textContent=`مرحله ${fa(Math.min(index+1,6))} از ۶`;document.getElementById('score').textContent=fa(score);document.getElementById('bar').style.width=(index/6*100)+'%';}
+function render(){
+ updateTop(); const t=tasks[index],g=document.getElementById('game');
+ let html=`<div class="taskhead"><div class="num">${fa(index+1)}</div><div><h2>${t.title}</h2><p class="sub">${t.desc}</p></div></div>`;
+ if(t.story) html+=`<div class="story">${t.story}</div>`;
+ if(t.type==='single'){
+ html+=`<p><strong>${t.q}</strong></p><div class="options">${t.opts.map((x,i)=>`<button class="opt" data-i="${i}">${fa(i+1)}. ${x}</button>`).join('')}</div>`;
+ }else if(t.type==='multi'){
+ html+=`<p><strong>${t.a.length===2?'دو':'سه'} گزینهٔ درست را انتخاب کن:</strong></p><div class="options">${t.opts.map((x,i)=>`<button class="opt" data-i="${i}">□ ${x}</button>`).join('')}</div>`;
+ }else if(t.type==='order'){
+ order=[...t.items.map((_,i)=>i)]; html+=`<p><strong>با فلش‌ها ترتیب جمله‌ها را تغییر بده:</strong></p><div class="orderlist" id="orderlist">${orderHTML(t)}</div>`;
+ }else if(t.type==='extra'){
+ html+=`<p><strong>کدام جمله را باید حذف کنیم؟</strong></p><div class="options">${t.opts.map((x,i)=>`<button class="opt" data-i="${i}">${x}</button>`).join('')}</div>`;
+ }
+ html+=`<div class="feedback" id="feedback"></div><div class="actions"><button class="primary" id="check">بررسی پاسخ</button><button class="secondary" id="reset">شروع دوبارهٔ این مرحله</button></div><p class="hint">راهنما: یک بند خوب، یک موضوع روشن دارد و جمله‌های آن به همان موضوع مربوط‌اند.</p>`;
+ g.innerHTML=html;
+ if(t.type==='single'||t.type==='extra'){g.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{g.querySelectorAll('.opt').forEach(x=>x.classList.remove('selected'));b.classList.add('selected')})}
+ if(t.type==='multi'){g.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{b.classList.toggle('selected');b.textContent=(b.classList.contains('selected')?'☑ ':'□ ')+t.opts[+b.dataset.i]})}
+ if(t.type==='order') bindOrder(t);
+ document.getElementById('check').onclick=()=>check(t);
+ document.getElementById('reset').onclick=render;
+}
+function orderHTML(t){return order.map((v,pos)=>`<div class="orderitem"><strong>${fa(pos+1)}.</strong><span>${t.items[v]}</span><button class="move" data-pos="${pos}" data-dir="-1" aria-label="بالا">↑</button><button class="move" data-pos="${pos}" data-dir="1" aria-label="پایین">↓</button></div>`).join('')}
+function bindOrder(t){document.querySelectorAll('.move').forEach(b=>b.onclick=()=>{let p=+b.dataset.pos,n=p+(+b.dataset.dir);if(n<0||n>=order.length)return;[order[p],order[n]]=[order[n],order[p]];document.getElementById('orderlist').innerHTML=orderHTML(t);bindOrder(t)})}
+function check(t){
+ const g=document.getElementById('game');let ok=false;
+ if(t.type==='single'||t.type==='extra'){let b=g.querySelector('.opt.selected');if(!b){show(false,'اول یک گزینه را انتخاب کن.');return}ok=+b.dataset.i===t.a}
+ if(t.type==='multi'){let got=[...g.querySelectorAll('.opt.selected')].map(b=>+b.dataset.i).sort((a,b)=>a-b);ok=JSON.stringify(got)===JSON.stringify([...t.a].sort((a,b)=>a-b))}
+ if(t.type==='order')ok=JSON.stringify(order)===JSON.stringify(t.correct);
+ if(ok){score+=10;updateTop();show(true,t.why);g.querySelectorAll('.opt,.move,#check').forEach(b=>b.disabled=true);let btn=document.createElement('button');btn.className='primary';btn.textContent=index===5?'دیدن نتیجه':'مرحلهٔ بعد';btn.style.marginTop='12px';btn.onclick=()=>{index++;if(index<tasks.length)render();else finish()};document.getElementById('feedback').after(btn)}
+ else show(false,t.type==='multi'?'تعداد یا انتخاب‌ها درست نیست. دوباره جمله‌ها را از نظر ارتباط با موضوع بررسی کن.':t.type==='order'?'به ترتیب رویدادها فکر کن: اول چه اتفاقی افتاد و بعد چه شد؟':'این گزینه با موضوع یا نقش جمله هماهنگ نیست. دوباره فکر کن!');
+}
+function show(good,msg){let f=document.getElementById('feedback');f.className='feedback show '+(good?'good':'bad');f.textContent=msg}
+function finish(){document.getElementById('bar').style.width='100%';document.getElementById('stepLabel').textContent='بازی کامل شد';document.getElementById('game').innerHTML=`<div class="result"><div class="kicker">پایان ماجراجویی</div><h2>آفرین، معمار کوچک بندها!</h2><div class="score">${fa(score)} از ۶۰</div><p class="sub">حالا می‌دانی برای ساختن یک بند خوب باید جملهٔ موضوع، جمله‌های مکمل، ترتیب منطقی، جملهٔ پایانی و ارتباط معنایی را رعایت کنی و جملهٔ اضافی را حذف کنی.</p><button class="primary" onclick="index=0;score=0;render()">دوباره بازی کن</button></div>`;updateTop()}
+render();
+</script>
+</body>
+</html>
